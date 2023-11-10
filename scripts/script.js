@@ -1,4 +1,40 @@
 const petsListEl = document.querySelector(".pets__list");
+const petsListLoadingEl = document.querySelector(".pets__loading");
+const petsListLoadingErrorEl = document.querySelector(".pets__fetch-error--hidden");
+
+/*
+    - async function fetchPets()
+        - Use axios
+        - send a GET request to https://62f1099325d9e8a2e7c47836.mockapi.io/api/v1/pets
+        - response.data will be an array of pet objects
+        
+        - loop over response.data 
+            - each item is a pet
+            - displayPet(each pet)
+    
+    fetchPets()
+ */
+async function fetchPets() {
+    try {
+        const response = await axios.get("https://62f1099325d9e8a2e7c47836.mockapi.io/api/v1/pets")
+        
+        petsListLoadingEl.classList.add("pets__loading--hidden");
+
+        const pets = response.data; 
+        
+        pets.forEach((pet) => {
+            displayPet(pet);
+        })
+    } catch (error) {
+        console.error(error);
+        
+        petsListLoadingEl.classList.add("pets__loading--hidden");
+        petsListLoadingErrorEl.classList.remove("pets__fetch-error--hidden");
+    }
+}
+
+fetchPets()
+
 
 function displayPet(pet) {  
     const petEl = document.createElement('li');
@@ -23,36 +59,10 @@ function displayPet(pet) {
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /** --------------- FORM SUBMISSION HERE --------------- */
-/*
-
-// listen for form submit event
 const petFormEl = document.getElementById("petForm");
 
-petFormEl.addEventListener("submit", (event) => {
+petFormEl.addEventListener("submit", async (event) => {
     event.preventDefault();
 
     const errorsListEl = document.getElementById("error-messages");
@@ -79,40 +89,24 @@ petFormEl.addEventListener("submit", (event) => {
     }
 
 
-    // TODO: What to do with out successful form submit?
-})
-*/
-
-
-/*
-[
-    {
-    "name": "Fat Cat",
-    "species": "cat",
-    "purpose": "Reduce Stress",
-    "createdAt": "2023-11-10T10:59:51.607Z",
-    "id": "1"
-    },
-    {
-    "name": "Sansa",
-    "species": "dog",
-    "purpose": "Cuddles",
-    "createdAt": "2023-11-10T10:59:51.607Z",
-    "id": "2"
-    },
-    {
-    "name": "Phil",
-    "species": "dog",
-    "purpose": "Exercise",
-    "createdAt": "2023-11-10T10:59:51.607Z",
-    "id": "3"
-    },
-    {
-    "name": "Squiggz",
-    "species": "dog",
-    "purpose": "Exercise",
-    "createdAt": "2023-11-10T10:59:51.607Z",
-    "id": "4"
+    try {
+        // Send a POST request to API
+        const response = await axios.post(
+            "https://62f1099325d9e8a2e7c47836.mockapi.io/api/v1/pets",
+            {
+                name: event.target.name.value,
+                species: event.target.species.value,
+                purpose: event.target.purpose.value
+            }
+        )
+        console.log(response);
+        
+        // Clear the List
+        petsListEl.innerHTML = ""
+        
+        // GET the list again from the API
+        fetchPets()
+    } catch (error) {
+        console.error(error);
     }
-] 
-*/
+})

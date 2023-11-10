@@ -9,6 +9,13 @@ textarea {
   resize: none;
 }
 
+.pets__loading--hidden {
+  display: none;
+}
+.pets__fetch-error--hidden {
+  display: none;
+}
+
 .pet-form__purpose-input, .pet-form__name-input {
   padding: 0.5rem 1rem;
   margin-left: 0.5rem;

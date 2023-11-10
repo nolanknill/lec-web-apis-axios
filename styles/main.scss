@@ -8,6 +8,19 @@ textarea {
     resize: none;
 }
 
+.pets {
+    &__loading {
+        &--hidden {
+            display: none;
+        }
+    }
+    &__fetch-error {
+        &--hidden {
+            display: none;
+        }
+    }
+}
+
 $font-size-form: 1.25rem;
 $vertical-spacing-form: 1rem;
 $color-primary: #1358db;
