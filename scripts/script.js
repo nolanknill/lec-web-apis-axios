@@ -46,7 +46,6 @@ function displayPet(pet) {
 
 
 
-
 /** --------------- FORM SUBMISSION HERE --------------- */
 /*
 
@@ -82,4 +81,38 @@ petFormEl.addEventListener("submit", (event) => {
 
     // TODO: What to do with out successful form submit?
 })
+*/
+
+
+/*
+[
+    {
+    "name": "Fat Cat",
+    "species": "cat",
+    "purpose": "Reduce Stress",
+    "createdAt": "2023-11-10T10:59:51.607Z",
+    "id": "1"
+    },
+    {
+    "name": "Sansa",
+    "species": "dog",
+    "purpose": "Cuddles",
+    "createdAt": "2023-11-10T10:59:51.607Z",
+    "id": "2"
+    },
+    {
+    "name": "Phil",
+    "species": "dog",
+    "purpose": "Exercise",
+    "createdAt": "2023-11-10T10:59:51.607Z",
+    "id": "3"
+    },
+    {
+    "name": "Squiggz",
+    "species": "dog",
+    "purpose": "Exercise",
+    "createdAt": "2023-11-10T10:59:51.607Z",
+    "id": "4"
+    }
+] 
 */
