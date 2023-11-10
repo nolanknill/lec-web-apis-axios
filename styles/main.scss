@@ -1,0 +1,67 @@
+body {
+    font-family: Verdana, sans-serif;
+    margin: 0;
+    padding: 1rem;
+}
+
+textarea {
+    resize: none;
+}
+
+$font-size-form: 1.25rem;
+$vertical-spacing-form: 1rem;
+$color-primary: #1358db;
+
+%default-input {
+    padding: 0.5rem $vertical-spacing-form;
+    margin-left: 0.5rem;
+    font-size: $font-size-form;
+    border: 2px solid $color-primary;
+    border-radius: 0.25rem;
+}
+
+.pet-form {
+    font-size: $font-size-form;
+
+    &__about {
+        width: 20rem;
+        height: 8rem;
+    }
+
+    &__name-input {
+        @extend %default-input;
+    }
+
+    &__purpose-input {
+        @extend %default-input;
+    }
+
+    &__input-group {
+        margin-top: $vertical-spacing-form;
+        display: flex;
+        align-items: center;
+
+        &--radios {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+    }
+
+    &__button {
+        padding: 1rem 1.5rem;
+        font-size: $font-size-form;
+        background-color: $color-primary;
+        border: $color-primary;
+        color: #fff;
+        cursor: pointer;
+
+        &::before {
+            content: "🐱";
+            margin-right: 0.5rem;
+        }
+        &::after {
+            content: "🐶";
+            margin-left: 0.5rem;
+        }
+    }
+}
